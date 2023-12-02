@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlcwmwgtyy75k"]
+
+[ext_resource type="Script" path="res://scene/Enemies/FOE.gd" id="1_f4dow"]
+[ext_resource type="Texture2D" uid="uid://bndrl8a4n03dm" path="res://Sprites/FOE.png" id="1_iq3gl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6voo"]
+radius = 88.0057
+
+[node name="FOE" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_f4dow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iq3gl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 16
+visibility_layer = 3
+position = Vector2(25, 9)
+shape = SubResource("CircleShape2D_i6voo")

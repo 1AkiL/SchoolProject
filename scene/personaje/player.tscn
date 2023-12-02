@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxydiqx1wxyxd"]
+
+[ext_resource type="Texture2D" uid="uid://cj64yw6ol3mb4" path="res://Sprites/Mokou idle.png" id="1_1vw8e"]
+[ext_resource type="Script" path="res://scene/personaje/player.gd" id="1_6jy1u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcy40"]
+radius = 11.0
+height = 74.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 31
+script = ExtResource("1_6jy1u")
+Speed = 200.0
+Jump_Velocity = -380.0
+second_jump_velocity = -390.0
+
+[node name="player_sprite" type="Sprite2D" parent="."]
+position = Vector2(-0.646159, -0.541656)
+scale = Vector2(1.13011, 1.00833)
+texture = ExtResource("1_1vw8e")
+offset = Vector2(24, -55)
+
+[node name="player_hitbox" type="CollisionShape2D" parent="."]
+visibility_layer = 31
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_wcy40")
+
+[node name="MarkerFireball" type="Node2D" parent="."]
+
+[node name="MarkerFireball Left" type="Marker2D" parent="MarkerFireball"]
+position = Vector2(-11, 0)
+
+[node name="MarkerFireball Right" type="Marker2D" parent="MarkerFireball"]
+position = Vector2(10, 0)
+
+[node name="TimerFIREBALL" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="timeout" from="TimerFIREBALL" to="." method="_on_timer_fireball_timeout"]
